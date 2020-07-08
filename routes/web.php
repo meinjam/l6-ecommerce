@@ -14,3 +14,12 @@ Route::get('/details', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'admin'], function () {
+    // Category Route
+    Route::resource('categories', 'Backend\CategoryController')->except(['show', 'destroy']);
+    Route::get('categories/{slug}/delete/', 'Backend\CategoryController@destroy')->name('delete.category');
+    // Brand Route
+    Route::resource('brands', 'Backend\BrandController')->except(['show', 'destroy']);
+    Route::get('brands/{slug}/delete/', 'Backend\BrandController@destroy')->name('delete.brand');
+});

@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -41,23 +43,6 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Dashboard</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard v1</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
 
       <!-- Main content -->
       @yield('content')
@@ -115,6 +100,35 @@
   <script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+  <!-- Toastr -->
+  <script src="{{ asset('admin/plugins/toastr/toastr.min.js') }}"></script>
+  <script>
+    @if(Session::has('success'))
+      toastr.success("{{ Session::get('success') }}");
+    @elseif(Session::has('error'))
+      toastr.error("{{ Session::get('error') }}");
+    @endif
+  </script>
+  <!-- Sweet Alert -->
+  <script src="{{ asset('admin/plugins/sweetalert2/sweetalert.min.js') }}"></script>
+  <script>
+    $(document).on("click", "#delete", function (e) {
+      e.preventDefault();
+      var link = $(this).attr("href");
+      swal({
+        title: 'Are you sure?',
+        text: "Once Delete, This will be Permanently Delete!",
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+        showCancelButton: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          window.location.href = link;
+        }
+      })
+    });
+  </script>
 </body>
 
 </html>

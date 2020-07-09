@@ -30,6 +30,11 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- Toastr -->
   <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+  <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="{{ asset('admin/plugins/ekko-lightbox/ekko-lightbox.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -127,6 +132,23 @@
           window.location.href = link;
         }
       })
+    });
+  </script>
+  <!-- Select2 -->
+  <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
+  <script>
+    $(function () {
+      $('.select2').select2();
+    })
+  </script>
+  <!-- Ekko Lightbox -->
+  <script src="{{ asset('admin/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
+  <script>
+    $(document).on('click', '[data-toggle="lightbox"]', function(e) {
+      e.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
     });
   </script>
 </body>

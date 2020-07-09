@@ -1,9 +1,3 @@
-{{-- @php
-    $prefix = Request::route()->getPrefix();
-    // $route = Request::current()->getName();
-    $route = Request::route();
-@endphp
-@dd($route) --}}
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a href="{{ route('home') }}" class="brand-link">
@@ -53,7 +47,7 @@
           <a href="" class="nav-link">
             <i class="nav-icon fas fa-copyright"></i>
             <p>
-              Manage Brands
+              Manage Brand
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -66,6 +60,64 @@
             </li>
           </ul>
         </li>
+
+        {{-- Colors --}}
+        <li class="nav-item has-treeview @yield('open-color')">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-palette"></i>
+            <p>
+              Manage Color
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('colors.index') }}" class="nav-link @yield('active-color')">
+                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                <p>View Colors</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        {{-- Sizes --}}
+        <li class="nav-item has-treeview @yield('open-size')">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-compress-alt"></i>
+            <p>
+              Manage Size
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('sizes.index') }}" class="nav-link @yield('active-size')">
+                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                <p>View Sizer</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        {{-- Product --}}
+        <li class="nav-item has-treeview @yield('open-product')">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-th-list"></i>
+            <p>
+              Manage Product
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('products.index') }}" class="nav-link @yield('active-product')">
+                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                <p>View Products</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
       </ul>
     </nav>
     <!-- /.sidebar-menu -->

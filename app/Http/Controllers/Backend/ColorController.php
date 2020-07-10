@@ -17,7 +17,7 @@ class ColorController extends Controller {
 
     public function index() {
         
-        $colors = Color::latest()->paginate( 15 );
+        $colors = Color::with(['products'])->latest()->paginate( 15 );
         return view( 'admin.color.index', compact( 'colors' ) );
     }
 

@@ -75,10 +75,14 @@
                                         class="btn btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('delete.color', $color->slug) }}"
-                                        class="btn btn-danger btn-sm" id="delete">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @if (count($color->products) == 0)
+                                        <a href="{{ route('delete.color', $color->slug) }}"
+                                            class="btn btn-danger btn-sm" id="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @else
+                                        <a class="btn btn-success btn-sm"><span class="text-white px-1">{{ $color->products->count() }}</span></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

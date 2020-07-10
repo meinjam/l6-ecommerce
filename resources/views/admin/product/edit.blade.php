@@ -137,7 +137,10 @@
 
                             {{-- Main Image --}}
                             <div class="col-md-6 form-group">
-                                <label for="image">Product Main Image</label>
+                                <label for="image">Product Main Image</label><br>
+                                <a href="{{ asset($product->image) }}" data-toggle="lightbox" data-title="Product Feature Image">
+                                    <img src="{{ asset($product->image) }}" height="100" class="rounded mb-2" alt="{{ asset($product->name) }}" title="Click to preview">
+                                </a>
                                 <div class="custom-file">
                                     <input type="file" name="image"
                                         class="custom-file-input @error('image') is-invalid @enderror" id="image">
@@ -148,14 +151,20 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <a href="{{ asset($product->image) }}" data-toggle="lightbox" data-title="Product Feature Image">
-                                    <img src="{{ asset($product->image) }}" height="100" class="rounded mt-2" alt="{{ asset($product->name) }}">
-                                </a>
                             </div>
 
                             {{-- Sub Image --}}
                             <div class="col-md-6 form-group">
-                                <label for="sub_image">Product Sub Images</label>
+                                <label for="sub_image">Product Sub Images</label><br>
+                                @if (count($product->sub_images) == 0)
+                                    <h2>Sorry, no sub image found.</h2>
+                                @else
+                                    @foreach ($product->sub_images as $image)
+                                    <a href="{{ asset($image->image) }}" data-toggle="lightbox" data-title="Product Sub Images" data-gallery="gallery">
+                                        <img src="{{ asset($image->image) }}" height="100" class="rounded mb-2" alt="{{ asset($image->name) }}" title="Click to preview">
+                                    </a>
+                                    @endforeach
+                                @endif
                                 <div class="custom-file">
                                     <input type="file" name="sub_image[]"
                                         class="custom-file-input @error('sub_image') is-invalid @enderror" id="sub_image" multiple>
@@ -166,11 +175,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                @foreach ($product->sub_images as $image)
-                                <a href="{{ asset($image->image) }}" data-toggle="lightbox" data-title="Product Sub Images" data-gallery="gallery">
-                                    <img src="{{ asset($image->image) }}" height="100" class="rounded mt-2" alt="{{ asset($image->name) }}">
-                                </a>
-                                @endforeach
                             </div>
 
                             {{-- Short Description --}}

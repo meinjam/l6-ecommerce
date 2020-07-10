@@ -69,17 +69,20 @@
                                     @else
                                         ---------------
                                     @endif
-                                    {{-- {{ $category->updated_by ? $category->updated_by : '-----' }} --}}
                                 </td>
                                 <td>
                                     <a href="{{ route('categories.edit', $category->slug) }}"
                                         class="btn btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('delete.category', $category->slug) }}"
-                                        class="btn btn-danger btn-sm" id="delete">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                    @if (count($category->products) == 0)
+                                        <a href="{{ route('delete.category', $category->slug) }}"
+                                            class="btn btn-danger btn-sm" id="delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @else
+                                        <a class="btn btn-success btn-sm"><span class="text-white px-1">{{ $category->products->count() }}</span></a>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

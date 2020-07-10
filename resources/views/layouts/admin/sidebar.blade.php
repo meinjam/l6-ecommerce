@@ -32,7 +32,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item ml-4">
               <a href="{{ route('categories.index') }}" class="nav-link @yield('active-category-all')">
                 {{-- <i class="fas fa-arrow-right nav-icon"></i> --}}
                 <i class="fas fa-long-arrow-alt-right nav-icon"></i>
@@ -52,7 +52,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item ml-4">
               <a href="{{ route('brands.index') }}" class="nav-link @yield('active-brand')">
                 <i class="fas fa-long-arrow-alt-right nav-icon"></i>
                 <p>View Brands</p>
@@ -71,7 +71,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item ml-4">
               <a href="{{ route('colors.index') }}" class="nav-link @yield('active-color')">
                 <i class="fas fa-long-arrow-alt-right nav-icon"></i>
                 <p>View Colors</p>
@@ -90,7 +90,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item ml-4">
               <a href="{{ route('sizes.index') }}" class="nav-link @yield('active-size')">
                 <i class="fas fa-long-arrow-alt-right nav-icon"></i>
                 <p>View Sizer</p>
@@ -109,7 +109,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            <li class="nav-item ml-4">
               <a href="{{ route('products.index') }}" class="nav-link @yield('active-product')">
                 <i class="fas fa-long-arrow-alt-right nav-icon"></i>
                 <p>View Products</p>

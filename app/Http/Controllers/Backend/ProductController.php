@@ -6,7 +6,6 @@ use App\Brand;
 use App\Category;
 use App\Color;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\ProductSubImage;
 use App\Size;
@@ -22,7 +21,7 @@ class ProductController extends Controller {
 
     public function index() {
 
-        $products = Product::with( ['colors', 'sizes'] )->latest()->paginate( 15 );
+        $products = Product::with( ['colors', 'sizes'] )->latest()->paginate( 10 );
         return view( 'admin.product.index', compact( 'products' ) );
     }
 
@@ -46,7 +45,7 @@ class ProductController extends Controller {
             'size_id'     => 'required',
             'short_desc'  => 'required|min:8',
             'long_desc'   => 'required|min:8',
-            'image'       => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image'       => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             // 'sub_image'   => 'image|mimes:jpeg,png,jpg,gif|max:5120',
         ] );
 
@@ -124,7 +123,7 @@ class ProductController extends Controller {
     public function update( Request $request, $slug ) {
 
         $request->validate( [
-            'name'        => 'sometimes|required|unique:products|min:3',
+            'name'        => 'required|min:3',
             'price'       => 'required|regex:/^[\d.]{1,10}$/',
             'category_id' => 'required',
             'brand_id'    => 'required',
@@ -132,14 +131,19 @@ class ProductController extends Controller {
             'size_id'     => 'required',
             'short_desc'  => 'required|min:8',
             'long_desc'   => 'required|min:8',
-            'image'       => 'image|mimes:jpeg,png,jpg,gif|max:5120',
+            'image'       => 'image|mimes:jpeg,png,jpg,gif,webp|max:5120',
             // 'sub_image'   => 'image|mimes:jpeg,png,jpg,gif|max:5120',
         ] );
 
         
         $product = Product::where( 'slug', $slug )->firstOrFail();
-        $product->name = $request->name;
-        $product->slug = Str::slug( $request->name );
+        if ($request->name !== $product->name) {
+            $request->validate( [
+                'name'        => 'unique:products',
+            ] );
+            $product->name = $request->name;
+            $product->slug = Str::slug( $request->name );
+        }
         $product->price = $request->price;
         $product->category_id = $request->category_id;
         $product->brand_id = $request->brand_id;

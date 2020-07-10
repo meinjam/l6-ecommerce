@@ -17,7 +17,7 @@ class SizeController extends Controller {
 
     public function index() {
         
-        $sizes = Size::latest()->paginate( 15 );
+        $sizes = Size::with(['products'])->latest()->paginate( 15 );
         return view( 'admin.size.index', compact( 'sizes' ) );
     }
 

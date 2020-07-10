@@ -42,19 +42,15 @@
                     <ul class="main-menu">
                         <li class="@yield('home')">
                             <a href="{{ route('homepage') }}">Home</a>
-                            <ul class="sub-menu">
-                                <li><a href="index.html">Homepage 1</a></li>
-                                <li><a href="home-02.html">Homepage 2</a></li>
-                                <li><a href="home-03.html">Homepage 3</a></li>
-                            </ul>
                         </li>
 
                         <li class="@yield('shop')">
-                            <a href="product.html">Shop</a>
-                        </li>
-
-                        <li class="label1 @yield('feature')" data-label1="hot">
-                            <a href="shoping-cart.html">Features</a>
+                            <a href="#">Shop</a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ route('products') }}">Products</a></li>
+                                <li><a href="home-02.html">Checkout</a></li>
+                                <li><a href="{{ route('cart') }}">Cart</a></li>
+                            </ul>
                         </li>
 
                         <li class="@yield('about')">
@@ -63,6 +59,10 @@
 
                         <li class="@yield('contact')">
                             <a href="{{ route('contact') }}">Contact</a>
+                        </li>
+
+                        <li class="@yield('feature')">
+                            <a href="shoping-cart.html">Login</a>
                         </li>
                     </ul>
                 </div>
@@ -147,35 +147,31 @@
 
         <ul class="main-menu-m">
             <li>
-                <a href="index.html">Home</a>
-                <ul class="sub-menu-m">
-                    <li><a href="index.html">Homepage 1</a></li>
-                    <li><a href="home-02.html">Homepage 2</a></li>
-                    <li><a href="home-03.html">Homepage 3</a></li>
-                </ul>
+                <a href="{{ route('homepage') }}">Home</a>
                 <span class="arrow-main-menu-m">
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </span>
             </li>
 
             <li>
-                <a href="product.html">Shop</a>
+                <a href="#">Shop</a>
+                <ul class="sub-menu-m">
+                    <li><a href="{{ route('products') }}">Products</a></li>
+                    <li><a href="">Checkout</a></li>
+                    <li><a href="{{ route('cart') }}">Cart</a></li>
+                </ul>
             </li>
 
             <li>
-                <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+                <a href="{{ route('about') }}">About</a>
             </li>
 
             <li>
-                <a href="blog.html">Blog</a>
+                <a href="{{ route('contact') }}">Contact</a>
             </li>
 
             <li>
-                <a href="about.html">About</a>
-            </li>
-
-            <li>
-                <a href="contact.html">Contact</a>
+                <a href="">Login</a>
             </li>
         </ul>
     </div>

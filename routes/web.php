@@ -5,7 +5,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Frontend\frontendController@index')->name('homepage');
 Route::get('/contact', 'Frontend\frontendController@contact')->name('contact');
 Route::get('/about', 'Frontend\frontendController@about')->name('about');
+Route::get('/products', 'Frontend\frontendController@products')->name('products');
 Route::get('/cart', 'Frontend\frontendController@cart')->name('cart');
+Route::get('/products/category/{slug}', 'Frontend\frontendController@category')->name('category');
+Route::get('/products/details/{slug}', 'Frontend\frontendController@product_details')->name('product.details');
 
 Route::get('/details', function () {
     return view('frontend.details');

@@ -1,4 +1,5 @@
 @extends('layouts.frontend.layout')
+@section('shop') active-menu @endsection
 
 @section('content')
 <!-- Title page -->

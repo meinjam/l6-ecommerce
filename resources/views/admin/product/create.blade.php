@@ -125,10 +125,11 @@
                             <div class="col-md-6 form-group">
                                 <label for="image">Select Main Image</label>
                                 <div class="custom-file">
-                                    <input type="file" name="image"
+                                    <input type="file" name="image" onchange="loadmainimg(event)"
                                         class="custom-file-input @error('image') is-invalid @enderror" id="image">
                                     <label class="custom-file-label" for="image">Choose file...</label>
                                 </div>
+                                <img id="showmainimg" class="d-none rounded mt-2" />
                                 @error('image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -138,12 +139,13 @@
 
                             {{-- Sub Image --}}
                             <div class="col-md-6 form-group">
-                                <label for="sub_image">Select Sub Images</label>
+                                <label for="file-input">Select Sub Images</label>
                                 <div class="custom-file">
                                     <input type="file" name="sub_image[]"
-                                        class="custom-file-input @error('sub_image') is-invalid @enderror" id="sub_image" multiple>
+                                        class="custom-file-input @error('sub_image') is-invalid @enderror" id="file-input" multiple>
                                     <label class="custom-file-label" for="image">Choose file...</label>
                                 </div>
+                                <div id="preview"></div>
                                 @error('sub_image')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

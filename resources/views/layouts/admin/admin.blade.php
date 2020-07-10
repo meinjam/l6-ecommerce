@@ -151,6 +151,36 @@
       });
     });
   </script>
+  {{-- Image Preview Before Upload --}}
+  <script>
+    var loadmainimg = function(event){
+      $('#showmainimg').attr('src', URL.createObjectURL(event.target.files[0]));
+      $('#showmainimg').removeClass('d-none').attr('height', 100);
+    };
+  </script>
+  <script>
+    function previewImages() {
+
+    var $preview = $('#preview').empty();
+    if (this.files) $.each(this.files, readAndPreview);
+
+    function readAndPreview(i, file) {
+      
+      if (!/\.(jpe?g|png|gif|webp)$/i.test(file.name)){
+        return alert(file.name +" is not an image");
+      } // else...
+      
+      var reader = new FileReader();
+
+      $(reader).on("load", function() {
+        $preview.append($("<img/>", {src:this.result, height:100, "class": "mt-2 rounded mr-2"}));
+      });
+
+      reader.readAsDataURL(file);
+    }
+    }
+    $('#file-input').on("change", previewImages);
+  </script>
 </body>
 
 </html>

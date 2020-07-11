@@ -6,13 +6,15 @@ Route::get('/', 'Frontend\frontendController@index')->name('homepage');
 Route::get('/contact', 'Frontend\frontendController@contact')->name('contact');
 Route::get('/about', 'Frontend\frontendController@about')->name('about');
 Route::get('/products', 'Frontend\frontendController@products')->name('products');
-Route::get('/cart', 'Frontend\frontendController@cart')->name('cart');
+// Route::get('/cart', 'Frontend\frontendController@cart')->name('cart');
 Route::get('/products/category/{slug}', 'Frontend\frontendController@category')->name('category');
 Route::get('/products/details/{slug}', 'Frontend\frontendController@product_details')->name('product.details');
 
-Route::get('/details', function () {
-    return view('frontend.details');
-});
+// Cart Routes
+Route::post('/add-to-cart', 'Frontend\CartController@add_to_cart')->name('add.cart');
+Route::get('/cart', 'Frontend\CartController@show_cart')->name('show.cart');
+Route::post('/update-cart', 'Frontend\CartController@update_cart')->name('update.cart');
+Route::get('/cart-delete/{id}', 'Frontend\CartController@delete_cart')->name('delete.cart');
 
 Auth::routes();
 

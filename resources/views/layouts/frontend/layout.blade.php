@@ -34,6 +34,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/util.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/main.css') }}">
 <!--===============================================================================================-->
+  <!-- Toastr -->
+  <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.min.css') }}">
 </head>
 <body class="animsition">
 	
@@ -210,6 +212,15 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="{{ asset('frontend/js/main.js') }}"></script>
+	  <!-- Toastr -->
+	<script src="{{ asset('admin/plugins/toastr/toastr.min.js') }}"></script>
+	<script>
+		@if(Session::has('success'))
+		  toastr.success("{{ Session::get('success') }}");
+		@elseif(Session::has('error'))
+		  toastr.error("{{ Session::get('error') }}");
+		@endif
+	</script>
 
 </body>
 </html>

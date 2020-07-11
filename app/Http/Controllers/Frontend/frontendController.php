@@ -34,10 +34,10 @@ class frontendController extends Controller {
         return view( 'frontend.product', compact('products', 'categories') );
     }
 
-    public function cart() {
+    // public function cart() {
 
-        return view('frontend.cart');
-    }
+    //     return view('frontend.cart');
+    // }
 
     public function category( $slug ) {
         

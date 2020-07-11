@@ -56,61 +56,75 @@
                     
                     <!--  -->
                     <div class="p-t-33">
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-203 flex-c-m respon6">
-                                Size
-                            </div>
-
-                            <div class="size-204 respon6-next">
-                                <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="size">
-                                        <option>Choose an option</option>
-                                        @foreach ($product->sizes as $size)
-                                        <option>Size {{ strtoupper($size->name) }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
+                        <form action="{{ route('add.cart') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    Size
                                 </div>
-                            </div>
-                        </div>
 
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-203 flex-c-m respon6">
-                                Color
-                            </div>
-
-                            <div class="size-204 respon6-next">
-                                <div class="rs1-select2 bor8 bg0">
-                                    <select class="js-select2" name="color">
-                                        <option>Choose an option</option>
-                                        @foreach ($product->colors as $color)
-                                            <option value="{{ $color->name }}">{{ $color->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex-w flex-r-m p-b-10">
-                            <div class="size-204 flex-w flex-m respon6-next">
-                                <div class="wrap-num-product flex-w m-r-20 m-tb-10">
-                                    <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-minus"></i>
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="size_id">
+                                            <option value="">Select Size</option>
+                                            @foreach ($product->sizes as $size)
+                                            <option value="{{ $size->id }}">Size {{ strtoupper($size->name) }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
                                     </div>
+                                    @if ($errors->has('size_id'))
+                                        <p style="color: #e72d00">{{ $errors->first('size_id') }} </p>
+                                    @endif
+                                </div>
+                            </div>
 
-                                    <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-
-                                    <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-                                        <i class="fs-16 zmdi zmdi-plus"></i>
-                                    </div>
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-203 flex-c-m respon6">
+                                    Color
                                 </div>
 
-                                <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Add to cart
-                                </button>
+                                <div class="size-204 respon6-next">
+                                    <div class="rs1-select2 bor8 bg0">
+                                        <select class="js-select2" name="color_id">
+                                            <option value="">Slect Color</option>
+                                            @foreach ($product->colors as $color)
+                                                <option value="{{ $color->id }}">{{ $color->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <div class="dropDownSelect2"></div>
+                                    </div>
+                                    @if ($errors->has('color_id'))
+                                        <p style="color: #e72d00">{{ $errors->first('color_id') }} </p>
+                                    @endif
+                                </div>
                             </div>
-                        </div>	
+
+                            <div class="flex-w flex-r-m p-b-10">
+                                <div class="size-204 flex-w flex-m respon6-next">
+                                    <div class="wrap-num-product flex-w m-r-20 m-tb-10">
+                                        <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-minus"></i>
+                                        </div>
+
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number" name="qty" value="1">
+
+                                        <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
+                                            <i class="fs-16 zmdi zmdi-plus"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-w m-r-20">
+                                        @if ($errors->has('qty'))
+                                            <p style="color: #e72d00">{{ $errors->first('qty') }} </p>
+                                        @endif
+                                    </div>
+                                    <button type="submit" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

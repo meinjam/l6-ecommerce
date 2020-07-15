@@ -12,6 +12,7 @@ class AdminSeeder extends Seeder {
             'email'    => 'injam.bd.jsr@gmail.com',
             'password' => Hash::make( 'injam12345' ),
             'slug'     => 'injamamul-haque',
+            'is_admin' => true,
         ] );
     }
 }

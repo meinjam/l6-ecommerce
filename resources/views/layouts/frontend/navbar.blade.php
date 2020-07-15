@@ -53,7 +53,9 @@
                             <a href="#">Shop</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ route('products') }}">Products</a></li>
-                                <li><a href="home-02.html">Checkout</a></li>
+                                @auth
+                                <li><a href="{{ route('checkout') }}">Checkout</a></li>
+                                @endauth
                                 <li><a href="{{ route('show.cart') }}">Cart</a></li>
                             </ul>
                         </li>
@@ -66,9 +68,29 @@
                             <a href="{{ route('contact') }}">Contact</a>
                         </li>
 
-                        <li class="@yield('feature')">
-                            <a href="shoping-cart.html">Login</a>
-                        </li>
+                        @guest
+                            <li>
+                                <a href="{{ route('login') }}">Login</a>
+                            </li>
+                        @else
+                            <li class="@yield('account')">
+                                <a href="#">Account</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{ route('profile', Auth::user()->slug) }}">Profile</a></li>
+                                    <li><a href="">Orders</a></li>
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
 
@@ -246,9 +268,15 @@
                         View Cart
                     </a>
 
+                    @guest
+                    <a href="{{ route('login') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
+                        Login for Checkout
+                    </a>
+                    @else
                     <a href="{{ route('show.cart') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
                         Check Out
                     </a>
+                    @endguest
                 </div>
             </div>
         </div>

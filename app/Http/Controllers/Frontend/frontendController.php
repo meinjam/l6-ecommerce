@@ -55,8 +55,9 @@ class frontendController extends Controller {
         return view( 'frontend.details', compact( 'product' ) );
     }
 
-    public function edit( $id ) {
-        //
+    public function checkout(  ) {
+        
+        return 'checkout page';
     }
 
     public function update( Request $request, $id ) {

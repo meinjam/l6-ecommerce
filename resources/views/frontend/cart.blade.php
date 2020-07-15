@@ -96,8 +96,11 @@
                     <div class="flex-w flex-m m-r-20 m-tb-5">
                         <a href="{{ route('products') }}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Continue Shopping</a>
                         &nbsp;&nbsp;
-
-                        <a href="login-check.html" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a>
+                        @guest
+                        <a href="{{ route('login') }}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Login for Checkout</a>
+                        @else
+                        <a href="{{ route('checkout') }}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a>
+                        @endguest
                     </div>
                 </div>
             </div>

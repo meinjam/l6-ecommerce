@@ -34,11 +34,6 @@ class frontendController extends Controller {
         return view( 'frontend.product', compact('products', 'categories') );
     }
 
-    // public function cart() {
-
-    //     return view('frontend.cart');
-    // }
-
     public function category( $slug ) {
         
         $category = Category::where('slug', $slug)->firstOrFail();
@@ -53,11 +48,6 @@ class frontendController extends Controller {
         $product = Product::where('slug', $slug)->firstOrFail();
         // return response()->json($product);
         return view( 'frontend.details', compact( 'product' ) );
-    }
-
-    public function checkout(  ) {
-        
-        return 'checkout page';
     }
 
     public function update( Request $request, $id ) {

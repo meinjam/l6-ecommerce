@@ -98,6 +98,8 @@
                         &nbsp;&nbsp;
                         @guest
                         <a href="{{ route('login') }}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Login for Checkout</a>
+                        {{-- @elseif()
+                        <a href="{{ route('payment') }}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a> --}}
                         @else
                         <a href="{{ route('checkout') }}" class="flex-c-m stext-101 cl2 size-119 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer m-tb-10">Checkout</a>
                         @endguest

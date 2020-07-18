@@ -24,7 +24,7 @@
                     <p class="text-center mb-1">Phone: {{ $profile->mobile }}</p>
                     <p class="text-center mb-1">Gender: {{ $profile->gender }}</p>
                     <p class="text-center mb-1">Address: {{ $profile->address }}</p>
-                    <p class="text-center"><a href="" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">See Orders</a></p>
+                    <p class="text-center"><a href="{{ route('order.list') }}" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">See Orders</a></p>
                 </div>
             </div>
         </div>

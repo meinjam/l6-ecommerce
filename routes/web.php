@@ -19,6 +19,7 @@ Route::post('/checkout', 'Frontend\CartController@checkout_store')->name('checko
 Route::get('/payment', 'Frontend\CartController@payment')->name('payment')->middleware('auth');
 Route::post('/payment', 'Frontend\CartController@payment_store')->name('payment.store')->middleware('auth');
 Route::get('/order-list', 'Frontend\CartController@order_list')->name('order.list')->middleware('auth');
+Route::get('/order-details/{id}', 'Frontend\CartController@order_details')->name('order.details')->middleware('auth');
 
 // User Profile Route
 Route::get('/profile/{slug}', 'Frontend\ProfileController@profile')->name('profile');

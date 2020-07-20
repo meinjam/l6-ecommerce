@@ -163,7 +163,10 @@ class CartController extends Controller {
         return view( 'frontend.profile.orders', compact('orders') );
     }
 
-    public function destroy( $id ) {
-        //
+    public function order_details( $id ) {
+        
+        $order = Order::with(['payment', 'shipping', 'orderdtails'])->where('order_no', $id)->where('user_id', Auth::id())->firstOrFail();
+        // return response()->json($order);
+        return view( 'frontend.profile.order-details', compact('order') );
     }
 }

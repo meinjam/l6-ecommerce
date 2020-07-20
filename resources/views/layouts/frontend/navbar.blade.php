@@ -77,7 +77,7 @@
                                 <a href="#">Account</a>
                                 <ul class="sub-menu">
                                     <li><a href="{{ route('profile', Auth::user()->slug) }}">Profile</a></li>
-                                    <li><a href="">Orders</a></li>
+                                    <li><a href="{{ route('order.list') }}">Orders</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

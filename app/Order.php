@@ -14,4 +14,19 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Product', 'order_items', 'order_id', 'product_id')->withPivot('quantity', 'price');
     }
+
+    public function payment()
+    {
+        return $this->belongsTo('App\Payment');
+    }
+
+    public function shipping()
+    {
+        return $this->belongsTo('App\Shipping');
+    }
+
+    public function orderdtails()
+    {
+        return $this->hasMany('App\OrderDtail', 'order_id', 'id');
+    }
 }

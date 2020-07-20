@@ -19,6 +19,7 @@
                         <tr>
                             <th>Order No</th>
                             <th>Total Amount</th>
+                            <th>Payment Type</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -29,12 +30,15 @@
                                 <td>{{ $order->order_no }}</td>
                                 <td>{{ $order->total_price }}</td>
                                 <td>
+                                    {{ $order->payment->payment_method == 'bKash' ? $order->payment->payment_method . ' (' . $order->payment->transaction_number . ')' : $order->payment->payment_method }}
+                                </td>
+                                <td>
                                     <span class="badge badge-info">
                                         {{ $order->status == 0 ? 'Pending' : 'Approved' }}
                                     </span>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-success btn-sm">Details</a>
+                                    <a href="{{ route('order.details', $order->order_no) }}" class="btn btn-success btn-sm">Details</a>
                                 </td>
                             </tr>
                         @endforeach

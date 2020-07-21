@@ -33,9 +33,11 @@
                                     {{ $order->payment->payment_method == 'bKash' ? $order->payment->payment_method . ' (' . $order->payment->transaction_number . ')' : $order->payment->payment_method }}
                                 </td>
                                 <td>
-                                    <span class="badge badge-info">
-                                        {{ $order->status == 0 ? 'Pending' : 'Approved' }}
-                                    </span>
+                                    @if ($order->status == 0)
+                                        <span class="badge badge-danger">Pending</span>
+                                    @else
+                                        <span class="badge badge-info">Approved</span>
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ route('order.details', $order->order_no) }}" class="btn btn-success btn-sm">Details</a>

@@ -44,4 +44,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     // Product Route
     Route::resource('products', 'Backend\ProductController')->except(['destroy']);
     Route::get('products/{slug}/delete/', 'Backend\ProductController@destroy')->name('delete.product');
+    // Customer Route
+    Route::get('customres', 'Backend\CustomerController@index')->name('customer.list');
+    // Order Route
+    Route::get('pending-orders', 'Backend\OrderController@pending')->name('pending.list');
+    Route::get('approved-orders', 'Backend\OrderController@approved')->name('approved.list');
+    Route::get('order/{id}/details', 'Backend\OrderController@order_details')->name('details.order');
+    Route::post('order/{id}/approve', 'Backend\OrderController@approved_single')->name('approved.order');
 });

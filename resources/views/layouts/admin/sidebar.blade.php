@@ -22,6 +22,26 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
+        {{-- Customer --}}
+        <li class="nav-item has-treeview @yield('open-customer')">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-users"></i>
+            <p>
+              Manage Customer
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item ml-4">
+              <a href="{{ route('customer.list') }}" class="nav-link @yield('active-customer')">
+                {{-- <i class="fas fa-arrow-right nav-icon"></i> --}}
+                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                <p>View Customer</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        
         {{-- Category --}}
         <li class="nav-item has-treeview @yield('open-category')">
           <a href="" class="nav-link">
@@ -113,6 +133,31 @@
               <a href="{{ route('products.index') }}" class="nav-link @yield('active-product')">
                 <i class="fas fa-long-arrow-alt-right nav-icon"></i>
                 <p>View Products</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        {{-- Order --}}
+        <li class="nav-item has-treeview @yield('open-order')">
+          <a href="" class="nav-link">
+            <i class="nav-icon fas fa-sort-amount-up-alt"></i>
+            <p>
+              Manage Order
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item ml-4">
+              <a href="{{ route('pending.list') }}" class="nav-link @yield('active-pending')">
+                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                <p>Pending Order</p>
+              </a>
+            </li>
+            <li class="nav-item ml-4">
+              <a href="{{ route('approved.list') }}" class="nav-link @yield('active-approved')">
+                <i class="fas fa-long-arrow-alt-right nav-icon"></i>
+                <p>Approved Order</p>
               </a>
             </li>
           </ul>

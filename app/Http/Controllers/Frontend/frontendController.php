@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Category;
+use App\Color;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
@@ -50,8 +51,11 @@ class frontendController extends Controller {
         return view( 'frontend.details', compact( 'product' ) );
     }
 
-    public function update( Request $request, $id ) {
-        //
+    public function search( Request $request ) {
+        $search = $request->get('search');
+        
+        $products = Product::where( 'name', 'like', '%' . $search . '%' )->latest()->get();
+        return view( 'frontend.search', compact( 'products' ) );
     }
 
     public function destroy( $id ) {

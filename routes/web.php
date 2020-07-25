@@ -8,6 +8,7 @@ Route::get('/about', 'Frontend\frontendController@about')->name('about');
 Route::get('/products', 'Frontend\frontendController@products')->name('products');
 Route::get('/products/category/{slug}', 'Frontend\frontendController@category')->name('category');
 Route::get('/products/details/{slug}', 'Frontend\frontendController@product_details')->name('product.details');
+Route::get('/search', 'Frontend\frontendController@search')->name('search');
 
 // Cart Routes
 Route::post('/add-to-cart', 'Frontend\CartController@add_to_cart')->name('add.cart');
